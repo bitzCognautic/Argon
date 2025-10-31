@@ -1,0 +1,128 @@
+package bitz.argon.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ParticleDescriptions {
+    private static final Map<String, String> DESCRIPTIONS = new HashMap<>();
+    
+    static {
+        // Populate particle descriptions
+        DESCRIPTIONS.put("ANGRY_VILLAGER", "Red angry marks from villagers");
+        DESCRIPTIONS.put("ASH", "Ash particles in basalt deltas");
+        DESCRIPTIONS.put("BLOCK", "Block breaking particles");
+        DESCRIPTIONS.put("BLOCK_MARKER", "Barrier/light block markers");
+        DESCRIPTIONS.put("BUBBLE", "Water bubble particles");
+        DESCRIPTIONS.put("BUBBLE_COLUMN_UP", "Upward bubble columns");
+        DESCRIPTIONS.put("BUBBLE_POP", "Popping bubble particles");
+        DESCRIPTIONS.put("CAMPFIRE_COSY_SMOKE", "Cozy campfire smoke");
+        DESCRIPTIONS.put("CAMPFIRE_SIGNAL_SMOKE", "Signal campfire smoke");
+        DESCRIPTIONS.put("CHERRY_LEAVES", "Cherry blossom petals");
+        DESCRIPTIONS.put("CLOUD", "White cloud particles");
+        DESCRIPTIONS.put("COMPOSTER", "Green composter particles");
+        DESCRIPTIONS.put("CRIMSON_SPORE", "Crimson forest spores");
+        DESCRIPTIONS.put("CRIT", "Critical hit sparkles");
+        DESCRIPTIONS.put("CURRENT_DOWN", "Downward water current");
+        DESCRIPTIONS.put("DAMAGE_INDICATOR", "Damage number particles");
+        DESCRIPTIONS.put("DOLPHIN", "Dolphin trail particles");
+        DESCRIPTIONS.put("DRAGON_BREATH", "Dragon breath particles");
+        DESCRIPTIONS.put("DRIPPING_DRIPSTONE_LAVA", "Lava dripping from dripstone");
+        DESCRIPTIONS.put("DRIPPING_DRIPSTONE_WATER", "Water dripping from dripstone");
+        DESCRIPTIONS.put("DRIPPING_HONEY", "Honey dripping particles");
+        DESCRIPTIONS.put("DRIPPING_LAVA", "Lava dripping particles");
+        DESCRIPTIONS.put("DRIPPING_OBSIDIAN_TEAR", "Crying obsidian tears");
+        DESCRIPTIONS.put("DRIPPING_WATER", "Water dripping particles");
+        DESCRIPTIONS.put("DUST", "Redstone dust particles");
+        DESCRIPTIONS.put("DUST_COLOR_TRANSITION", "Color changing dust");
+        DESCRIPTIONS.put("DUST_PILLAR", "Dust pillar particles");
+        DESCRIPTIONS.put("DUST_PLUME", "Dust plume particles");
+        DESCRIPTIONS.put("EFFECT", "Potion effect particles");
+        DESCRIPTIONS.put("EGG_CRACK", "Egg cracking particles");
+        DESCRIPTIONS.put("ELDER_GUARDIAN", "Elder guardian curse");
+        DESCRIPTIONS.put("ELECTRIC_SPARK", "Electric spark particles");
+        DESCRIPTIONS.put("ENCHANT", "Enchanting table runes");
+        DESCRIPTIONS.put("ENCHANTED_HIT", "Enchanted weapon hit");
+        DESCRIPTIONS.put("END_ROD", "End rod particles");
+        DESCRIPTIONS.put("ENTITY_EFFECT", "Entity potion effects");
+        DESCRIPTIONS.put("EXPLOSION", "Explosion particles");
+        DESCRIPTIONS.put("EXPLOSION_EMITTER", "Large explosion center");
+        DESCRIPTIONS.put("FALLING_DRIPSTONE_LAVA", "Falling lava from dripstone");
+        DESCRIPTIONS.put("FALLING_DRIPSTONE_WATER", "Falling water from dripstone");
+        DESCRIPTIONS.put("FALLING_DUST", "Falling dust particles");
+        DESCRIPTIONS.put("FALLING_HONEY", "Falling honey particles");
+        DESCRIPTIONS.put("FALLING_LAVA", "Falling lava particles");
+        DESCRIPTIONS.put("FALLING_NECTAR", "Falling nectar particles");
+        DESCRIPTIONS.put("FALLING_OBSIDIAN_TEAR", "Falling obsidian tears");
+        DESCRIPTIONS.put("FALLING_SPORE_BLOSSOM", "Falling spore blossom");
+        DESCRIPTIONS.put("FALLING_WATER", "Falling water particles");
+        DESCRIPTIONS.put("FIREWORK", "Firework explosion particles");
+        DESCRIPTIONS.put("FISHING", "Fishing bobber particles");
+        DESCRIPTIONS.put("FLAME", "Fire flame particles");
+        DESCRIPTIONS.put("FLASH", "Flash particles");
+        DESCRIPTIONS.put("GLOW", "Glow particles");
+        DESCRIPTIONS.put("GLOW_SQUID_INK", "Glow squid ink particles");
+        DESCRIPTIONS.put("GUST", "Wind gust particles");
+        DESCRIPTIONS.put("GUST_EMITTER_LARGE", "Large wind gust");
+        DESCRIPTIONS.put("GUST_EMITTER_SMALL", "Small wind gust");
+        DESCRIPTIONS.put("HAPPY_VILLAGER", "Green happy villager hearts");
+        DESCRIPTIONS.put("HEART", "Red heart particles");
+        DESCRIPTIONS.put("INFESTED", "Infested block particles");
+        DESCRIPTIONS.put("INSTANT_EFFECT", "Instant potion effect");
+        DESCRIPTIONS.put("ITEM", "Item break particles");
+        DESCRIPTIONS.put("ITEM_COBWEB", "Cobweb item particles");
+        DESCRIPTIONS.put("ITEM_SLIME", "Slime ball particles");
+        DESCRIPTIONS.put("ITEM_SNOWBALL", "Snowball break particles");
+        DESCRIPTIONS.put("LANDING_HONEY", "Honey landing particles");
+        DESCRIPTIONS.put("LANDING_LAVA", "Lava landing particles");
+        DESCRIPTIONS.put("LANDING_OBSIDIAN_TEAR", "Obsidian tear landing");
+        DESCRIPTIONS.put("LARGE_SMOKE", "Large smoke particles");
+        DESCRIPTIONS.put("LAVA", "Lava ambient particles");
+        DESCRIPTIONS.put("MYCELIUM", "Mycelium spore particles");
+        DESCRIPTIONS.put("NAUTILUS", "Nautilus shell particles");
+        DESCRIPTIONS.put("NOTE", "Music note particles");
+        DESCRIPTIONS.put("OMINOUS_SPAWNING", "Ominous trial spawner");
+        DESCRIPTIONS.put("PALE_OAK_LEAVES", "Pale oak leaf particles");
+        DESCRIPTIONS.put("POOF", "Generic poof/smoke");
+        DESCRIPTIONS.put("PORTAL", "Nether portal particles");
+        DESCRIPTIONS.put("RAID_OMEN", "Raid omen particles");
+        DESCRIPTIONS.put("RAIN", "Rain splash particles");
+        DESCRIPTIONS.put("REVERSE_PORTAL", "Reverse portal particles");
+        DESCRIPTIONS.put("SCRAPE", "Copper scraping particles");
+        DESCRIPTIONS.put("SCULK_CHARGE", "Sculk charge particles");
+        DESCRIPTIONS.put("SCULK_CHARGE_POP", "Sculk charge pop");
+        DESCRIPTIONS.put("SCULK_SOUL", "Sculk soul particles");
+        DESCRIPTIONS.put("SHRIEK", "Warden shriek particles");
+        DESCRIPTIONS.put("SMALL_FLAME", "Small flame particles");
+        DESCRIPTIONS.put("SMALL_GUST", "Small gust particles");
+        DESCRIPTIONS.put("SMOKE", "Regular smoke particles");
+        DESCRIPTIONS.put("SNEEZE", "Panda sneeze particles");
+        DESCRIPTIONS.put("SNOWFLAKE", "Snowflake particles");
+        DESCRIPTIONS.put("SONIC_BOOM", "Warden sonic boom");
+        DESCRIPTIONS.put("SOUL", "Soul particles");
+        DESCRIPTIONS.put("SOUL_FIRE_FLAME", "Soul fire flames");
+        DESCRIPTIONS.put("SPIT", "Llama spit particles");
+        DESCRIPTIONS.put("SPLASH", "Water splash particles");
+        DESCRIPTIONS.put("SPORE_BLOSSOM_AIR", "Spore blossom air particles");
+        DESCRIPTIONS.put("SQUID_INK", "Squid ink particles");
+        DESCRIPTIONS.put("SWEEP_ATTACK", "Sword sweep attack");
+        DESCRIPTIONS.put("TINTED_LEAVES", "Tinted leaf particles");
+        DESCRIPTIONS.put("TOTEM_OF_UNDYING", "Totem activation particles");
+        DESCRIPTIONS.put("TRAIL", "Trail particles");
+        DESCRIPTIONS.put("TRIAL_OMEN", "Trial omen particles");
+        DESCRIPTIONS.put("TRIAL_SPAWNER_DETECTION", "Trial spawner detection");
+        DESCRIPTIONS.put("TRIAL_SPAWNER_DETECTION_OMINOUS", "Ominous spawner detection");
+        DESCRIPTIONS.put("UNDERWATER", "Underwater particles");
+        DESCRIPTIONS.put("VAULT_CONNECTION", "Vault connection particles");
+        DESCRIPTIONS.put("VIBRATION", "Sculk vibration particles");
+        DESCRIPTIONS.put("WARPED_SPORE", "Warped forest spores");
+        DESCRIPTIONS.put("WAX_OFF", "Wax removal particles");
+        DESCRIPTIONS.put("WAX_ON", "Wax application particles");
+        DESCRIPTIONS.put("WHITE_ASH", "White ash particles");
+        DESCRIPTIONS.put("WHITE_SMOKE", "White smoke particles");
+        DESCRIPTIONS.put("WITCH", "Witch spell particles");
+    }
+    
+    public static String getDescription(String particleType) {
+        return DESCRIPTIONS.getOrDefault(particleType, "Unknown particle type");
+    }
+}

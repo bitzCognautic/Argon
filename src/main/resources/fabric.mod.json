@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "argon",
+  "version": "${version}",
+  "name": "Argon",
+  "description": "All-in-one Minecraft 1.21.10 Fabric mod to optimize performance with configurable rendering, ticking, particles, and graphics settings including fancy leaves with fast graphics.",
+  "authors": [
+    "Bitz"
+  ],
+  "contact": {
+    "homepage": "https://github.com/bitzdev/argon",
+    "sources": "https://github.com/bitzdev/argon"
+  },
+  "license": "MIT",
+  "icon": "assets/argon/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "bitz.argon.ArgonClient"
+    ],
+    "modmenu": [
+      "bitz.argon.config.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "argon.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "fabric-api": "*",
+    "minecraft": "1.21.10",
+    "java": ">=21"
+  },
+  "suggests": {
+    "sodium": "*",
+    "lithium": "*",
+    "iris": "*",
+    "starlight": "*"
+  }
+}

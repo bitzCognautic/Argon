@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "bitz.argon.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ChunkRenderDistanceMixin",
+    "ChunkRendererRegionMixin",
+    "EntityMixin",
+    "ItemEntityMixin",
+    "LightingProviderMixin",
+    "LivingEntityMixin",
+    "MinecraftClientMixin",
+    "OptionsScreenMixin",
+    "ParticleManagerMixin",
+    "VideoOptionsScreenMixin",
+    "WorldRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

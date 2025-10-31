@@ -1,0 +1,31 @@
+package bitz.argon.mixin;
+
+import bitz.argon.ArgonClient;
+import bitz.argon.config.ArgonConfig;
+import net.minecraft.world.chunk.light.LightingProvider;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(LightingProvider.class)
+public class LightingProviderMixin {
+    
+    private int lightingUpdateCounter = 0;
+    
+    @Inject(method = "doLightUpdates", at = @At("HEAD"), cancellable = true)
+    private void reduceLightingUpdates(CallbackInfoReturnable<Integer> cir) {
+        try {
+            ArgonConfig config = ArgonClient.getConfig();
+            if (config != null && config.reduceLightingUpdates) {
+                lightingUpdateCounter++;
+                // Skip 3 out of 4 lighting updates for better FPS
+                if (lightingUpdateCounter % 4 != 0) {
+                    cir.setReturnValue(0);
+                }
+            }
+        } catch (Exception e) {
+            // Silently fail
+        }
+    }
+}
