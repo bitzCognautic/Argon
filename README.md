@@ -178,7 +178,6 @@ Argon is open source and licensed under the MIT License. Feel free to contribute
 
 **⭐ If you enjoy Argon, please consider:**
 - Starring the GitHub repository
-- Leaving a review on Modrinth/CurseForge
 - Sharing with friends who need better FPS
 - Supporting development
 
