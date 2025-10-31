@@ -133,6 +133,7 @@ Argon intelligently reduces tick rates for distant entities:
 ✅ Enable Chunk LOD
 📊 LOD Distance: 20 chunks
 📊 LOD Quality: 2
+📊 Max Particles: 4000
 ```
 
 ## 🎓 Usage Tips
@@ -164,8 +165,8 @@ Argon intelligently reduces tick rates for distant entities:
 
 ## 💬 Support & Community
 
-- **Report Bugs**: [GitHub Issues](https://github.com/bitzCognautic/argon/issues)
-- **Feature Requests**: [GitHub Discussions](https://github.com/bitzCognautic/argon/discussions)
+- **Report Bugs**: [GitHub Issues](https://github.com/bitzCognautic/Argon/issues)
+- **Feature Requests**: [GitHub Discussions](https://github.com/bitzCognautic/Argon/issues/new)
 
 ## 📜 License
 
