@@ -1,6 +1,6 @@
-# 🚀 Argon - Ultimate Performance Optimization for Minecraft 1.21.10
+# 🚀 Argon - Ultimate Performance Optimization for Minecraft
 
-**Boost your FPS by 20-90%** with Argon, the most comprehensive performance mod for Minecraft 1.21.10!
+**Boost your FPS by 20-90%** with Argon, the most comprehensive performance mod for Minecraft!
 
 ## ⚡ What is Argon?
 
