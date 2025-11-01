@@ -41,6 +41,11 @@ public class ArgonConfig {
     public int lodDistance = 16; // Distance in chunks where LOD starts (8-32)
     public int lodQuality = 2; // Quality reduction factor (1-4, higher = lower quality)
     
+    // Zoom feature settings
+    public boolean enableZoom = true;
+    public double zoomLevel = 4.0; // Zoom multiplier (1.0-10.0, default 4.0)
+    public boolean smoothZoom = true; // Smooth zoom transition
+    
     private static Map<String, Boolean> createDefaultParticleOptions() {
         Map<String, Boolean> particles = new HashMap<>();
         

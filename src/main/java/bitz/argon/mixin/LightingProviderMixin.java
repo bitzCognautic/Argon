@@ -19,8 +19,8 @@ public class LightingProviderMixin {
             ArgonConfig config = ArgonClient.getConfig();
             if (config != null && config.reduceLightingUpdates) {
                 lightingUpdateCounter++;
-                // Skip 3 out of 4 lighting updates for better FPS
-                if (lightingUpdateCounter % 4 != 0) {
+                // Skip 1 out of 2 lighting updates for better FPS (reduced from 3/4 to prevent dark patches)
+                if (lightingUpdateCounter % 2 != 0) {
                     cir.setReturnValue(0);
                 }
             }

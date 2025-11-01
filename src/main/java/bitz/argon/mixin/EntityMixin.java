@@ -25,39 +25,33 @@ public abstract class EntityMixin {
         if (config.entityTickingOptimization) {
             Entity entity = (Entity) (Object) this;
             
-            // Skip ticking for distant entities
+            // Skip ticking for distant entities, but only for very far entities to avoid choppy animations
             if (entity.getEntityWorld() != null && entity.getEntityWorld().isClient()) {
                 var client = net.minecraft.client.MinecraftClient.getInstance();
                 if (client != null && client.player != null && client.world != null && entity != client.player) {
                     double distance = client.player.squaredDistanceTo(getX(), getY(), getZ());
                     
-                    // More aggressive culling for better FPS
+                    // Reduced culling to prevent choppy animations - only cull very distant entities
                     if (config.aggressiveEntityCulling) {
-                        // Very aggressive - skip most distant entity ticks
-                        if (distance > 1024.0) { // 32 blocks
-                            tickSkipCounter++;
-                            if (tickSkipCounter % 8 != 0) { // Tick every 8th tick
-                                ci.cancel();
-                                return;
-                            }
-                        } else if (distance > 256.0) { // 16 blocks
+                        // Only skip ticks for entities beyond render distance
+                        if (distance > 16384.0) { // 128 blocks - beyond typical render distance
                             tickSkipCounter++;
                             if (tickSkipCounter % 4 != 0) { // Tick every 4th tick
                                 ci.cancel();
                                 return;
                             }
-                        }
-                    } else {
-                        // Normal culling
-                        if (distance > 4096.0) { // 64 blocks
+                        } else if (distance > 6400.0) { // 80 blocks
                             tickSkipCounter++;
-                            if (tickSkipCounter % 4 != 0) {
+                            if (tickSkipCounter % 2 != 0) { // Tick every 2nd tick
                                 ci.cancel();
                                 return;
                             }
-                        } else if (distance > 1024.0) { // 32 blocks
+                        }
+                    } else {
+                        // Normal culling - only for extremely distant entities
+                        if (distance > 25600.0) { // 160 blocks - way beyond normal render distance
                             tickSkipCounter++;
-                            if (tickSkipCounter % 2 != 0) { // Tick every 2nd tick
+                            if (tickSkipCounter % 3 != 0) {
                                 ci.cancel();
                                 return;
                             }

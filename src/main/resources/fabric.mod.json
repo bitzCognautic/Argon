@@ -3,7 +3,7 @@
   "id": "argon",
   "version": "${version}",
   "name": "Argon",
-  "description": "All-in-one Minecraft 1.21.10 Fabric mod to optimize performance with configurable rendering, ticking, particles, and graphics settings including fancy leaves with fast graphics.",
+  "description": "All-in-one Minecraft 1.21.x Fabric mod to optimize performance with configurable rendering, ticking, particles, and graphics settings including fancy leaves with fast graphics.",
   "authors": [
     "Bitz"
   ],
@@ -28,7 +28,7 @@
   "depends": {
     "fabricloader": ">=0.17.2",
     "fabric-api": "*",
-    "minecraft": "1.21.10",
+    "minecraft": "~1.21",
     "java": ">=21"
   },
   "suggests": {

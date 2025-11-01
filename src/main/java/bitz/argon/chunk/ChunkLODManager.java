@@ -32,7 +32,7 @@ public class ChunkLODManager {
      */
     public int calculateLODLevel(ChunkPos chunkPos) {
         ArgonConfig config = ArgonClient.getConfig();
-        if (!config.enableChunkLOD) {
+        if (!config.enableChunkLOD && !config.fastChunkLoading) {
             return 0; // Full quality if LOD is disabled
         }
         
@@ -49,16 +49,30 @@ public class ChunkLODManager {
         int dz = Math.abs(chunkPos.z - playerChunk.z);
         int distance = Math.max(dx, dz);
         
+        // Get render distance from client
+        int renderDistance = client.options.getViewDistance().getValue();
+        
+        // Calculate 50% threshold for fast chunk loading
+        int halfRenderDistance = renderDistance / 2;
+        
         // Determine LOD level based on distance
-        if (distance < config.lodDistance / 2) {
-            return 0; // Full quality for nearby chunks
-        } else if (distance < config.lodDistance) {
-            return 1; // Medium quality
-        } else if (distance < config.lodDistance * 1.5) {
-            return Math.min(2, config.lodQuality); // Lower quality
-        } else {
-            return Math.min(3, config.lodQuality); // Lowest quality for very distant chunks
+        if (config.fastChunkLoading && distance >= halfRenderDistance) {
+            // Load far 50% chunks in low quality when fast chunk loading is enabled
+            return 2; // Low quality for distant chunks
+        } else if (config.enableChunkLOD) {
+            // Standard LOD behavior
+            if (distance < config.lodDistance / 2) {
+                return 0; // Full quality for nearby chunks
+            } else if (distance < config.lodDistance) {
+                return 1; // Medium quality
+            } else if (distance < config.lodDistance * 1.5) {
+                return Math.min(2, config.lodQuality); // Lower quality
+            } else {
+                return Math.min(3, config.lodQuality); // Lowest quality for very distant chunks
+            }
         }
+        
+        return 0; // Default to full quality
     }
     
     /**
