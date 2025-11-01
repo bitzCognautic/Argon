@@ -33,6 +33,9 @@ public class ParticleConfigScreen extends Screen {
     protected void init() {
         super.init();
         
+        // Clear particle buttons list when reinitializing
+        particleButtons.clear();
+        
         leftColumn = this.width / 2 - 155;
         rightColumn = this.width / 2 + 5;
         int y = 30;
@@ -45,7 +48,7 @@ public class ParticleConfigScreen extends Screen {
             if (!searchQuery.equals(text)) {
                 searchQuery = text;
                 scrollOffset = 0;
-                buildParticleButtons(76);
+                rebuildParticleButtons();
             }
         });
         this.addDrawableChild(searchField);
@@ -88,10 +91,19 @@ public class ParticleConfigScreen extends Screen {
         }).dimensions(this.width / 2 - 100, this.height - 28, 200, 20).build());
     }
     
+    private void rebuildParticleButtons() {
+        // Remove old particle buttons
+        for (CyclingButtonWidget<Boolean> button : particleButtons) {
+            this.remove(button);
+        }
+        particleButtons.clear();
+        
+        // Rebuild with the same Y position
+        buildParticleButtons(76);
+    }
     
     private void buildParticleButtons(int startY) {
-        // Remove old particle buttons
-        particleButtons.forEach(this::remove);
+        // Clear any existing particle buttons from the list
         particleButtons.clear();
         
         List<String> particleTypes = new ArrayList<>(config.particleOptions.keySet());
@@ -167,11 +179,11 @@ public class ParticleConfigScreen extends Screen {
         
         if (verticalAmount > 0 && scrollOffset > 0) {
             scrollOffset--;
-            buildParticleButtons(76);
+            rebuildParticleButtons();
             return true;
         } else if (verticalAmount < 0 && scrollOffset < maxScroll) {
             scrollOffset++;
-            buildParticleButtons(76);
+            rebuildParticleButtons();
             return true;
         }
         return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);

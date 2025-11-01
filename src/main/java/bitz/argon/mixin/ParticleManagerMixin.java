@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ParticleManager.class)
+@Mixin(value = ParticleManager.class, priority = 999)
 public class ParticleManagerMixin {
     
     @Inject(method = "addParticle(Lnet/minecraft/client/particle/Particle;)V", at = @At("HEAD"), cancellable = true)
@@ -22,6 +22,15 @@ public class ParticleManagerMixin {
             ArgonConfig config = ArgonClient.getConfig();
             if (config != null && config.disableAllParticles) {
                 ci.cancel();
+                return;
+            }
+            
+            // Check for block particles by examining particle class name
+            if (particle != null && config != null) {
+                String className = particle.getClass().getSimpleName().toLowerCase();
+                if (className.contains("block") && !config.isParticleEnabled("BLOCK")) {
+                    ci.cancel();
+                }
             }
         } catch (Exception e) {
             // Silently fail to avoid crashes
@@ -48,20 +57,16 @@ public class ParticleManagerMixin {
                 // Convert to uppercase to match config keys
                 String particleKey = particleId.toUpperCase();
                 
-                // Special handling for BLOCK and BLOCK_MARKER particles (block breaking/placing)
-                // These use BlockStateParticleEffect which wraps the actual particle type
+                // Special handling for BlockStateParticleEffect (block breaking/cracking particles)
                 if (parameters instanceof BlockStateParticleEffect) {
-                    // For block particles, check both BLOCK and BLOCK_MARKER
-                    if (particleKey.equals("BLOCK") || particleKey.equals("BLOCK_MARKER")) {
-                        if (!config.isParticleEnabled(particleKey)) {
-                            cir.setReturnValue(null);
-                            return;
-                        }
-                    }
+                    // Use "BLOCK" key for all block-based particles (breaking, falling, etc.)
+                    particleKey = "BLOCK";
                 }
                 
+                // Check if this particle type is enabled in config
                 if (!config.isParticleEnabled(particleKey)) {
                     cir.setReturnValue(null);
+                    return;
                 }
             }
         } catch (Exception e) {

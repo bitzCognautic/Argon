@@ -18,35 +18,30 @@ public class LivingEntityMixin {
         if (config.entityTickingOptimization) {
             LivingEntity entity = (LivingEntity) (Object) this;
             
-            // Optimize movement ticking for distant entities
+            // Optimize movement ticking for distant entities, but preserve smooth animations
             if (entity.getEntityWorld() != null && entity.getEntityWorld().isClient()) {
                 var client = net.minecraft.client.MinecraftClient.getInstance();
                 if (client != null && client.player != null && client.world != null && entity != client.player) {
                     double distance = client.player.squaredDistanceTo(entity.getX(), entity.getY(), entity.getZ());
                     
-                    // More aggressive movement culling for better FPS
+                    // Reduced movement culling to prevent choppy animations
                     if (config.aggressiveEntityCulling) {
-                        // Very aggressive - skip most distant entity movement
-                        if (distance > 1024.0) { // 32 blocks
-                            if (entity.age % 10 != 0) { // Update every 10th tick
+                        // Only skip movement for entities beyond render distance
+                        if (distance > 16384.0) { // 128 blocks - beyond typical render distance
+                            if (entity.age % 4 != 0) { // Update every 4th tick
                                 ci.cancel();
                                 return;
                             }
-                        } else if (distance > 256.0) { // 16 blocks
-                            if (entity.age % 5 != 0) { // Update every 5th tick
+                        } else if (distance > 6400.0) { // 80 blocks
+                            if (entity.age % 2 != 0) { // Update every 2nd tick
                                 ci.cancel();
                                 return;
                             }
                         }
                     } else {
-                        // Normal culling
-                        if (distance > 6400.0) { // 80 blocks
-                            if (entity.age % 5 != 0) {
-                                ci.cancel();
-                                return;
-                            }
-                        } else if (distance > 3200.0) { // 56 blocks
-                            if (entity.age % 3 != 0) { // Update every 3rd tick
+                        // Normal culling - only for extremely distant entities
+                        if (distance > 25600.0) { // 160 blocks - way beyond normal render distance
+                            if (entity.age % 3 != 0) {
                                 ci.cancel();
                                 return;
                             }
